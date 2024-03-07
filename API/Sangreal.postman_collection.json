@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "d39a16f5-9200-4a4f-a343-3a370a6756fb",
+		"name": "Sangreal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29993137"
+	},
+	"item": [
+		{
+			"name": "GET ALL PRODUCTS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": {}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "eyJraWQiOiJiYUQ2MDdqUlFMY0VKYWpaTnZvN3JyYTZUbVZzWm44S0VFa0VaUDJQQkxvPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI3MTA1ZTBjMS05YzBmLTQwMTUtOWQyMy04NTJlY2EyYTA0ZTIiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuZXUtd2VzdC0xLmFtYXpvbmF3cy5jb21cL2V1LXdlc3QtMV9TaHFURTdqcTYiLCJjbGllbnRfaWQiOiIxMWw4ZXFydjNtYnU0ZnRkYjlpdGZ1ZXMwayIsIm9yaWdpbl9qdGkiOiI4ZDE3NTVmNi0wODU1LTQ1MjgtYWQyNy01YjZkMDRkZDEwMDQiLCJldmVudF9pZCI6IjI4ODExZmE2LWU3MTgtNGMxNC04ZTgzLTNkZGUyODNhOWUzOSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE3MDc3MzkwODYsImV4cCI6MTcwNzc0NjQ4MSwiaWF0IjoxNzA3NzQ0NjgxLCJqdGkiOiJhOTA1ZWRmNS0yNWYzLTQxNTUtYWVlNy0yY2JhNzQyMTgyMjciLCJ1c2VybmFtZSI6IjcxMDVlMGMxLTljMGYtNDAxNS05ZDIzLTg1MmVjYTJhMDRlMiJ9.QUGDwxO47Dg8jnTWVr_aNloeD8dRZQ6_5XFhLUWkIm9U-PWmCk66ouZjX94lsQD65YgqklM_aBHOffXmLVaAkcbAtAxfHuBD2csSLQ-o8-aIg4JI9tHkwF6m7SqaFibuPjY7DdQ94xCSE_ekWCoHSdkPHbAJOiAZoASmzjO96qJmGox1BTzO9689-EmPn35ObkU-QnNRWHflHJVWxivcEhuhGEzsiBu_fVkFo34Kd5kEAjrnUqQvezUeJR4pcGYBqgr5CgSZiGgHaitGg8CTbKHEh5GvodpUaN33ET8G9P77utZmcDo6jGekVODzL9hRSqla-jzmv5uIQ6Zj3UovvQ",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "Cookie",
+						"value": "eyJraWQiOiJiYUQ2MDdqUlFMY0VKYWpaTnZvN3JyYTZUbVZzWm44S0VFa0VaUDJQQkxvPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI3MTA1ZTBjMS05YzBmLTQwMTUtOWQyMy04NTJlY2EyYTA0ZTIiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuZXUtd2VzdC0xLmFtYXpvbmF3cy5jb21cL2V1LXdlc3QtMV9TaHFURTdqcTYiLCJjbGllbnRfaWQiOiIxMWw4ZXFydjNtYnU0ZnRkYjlpdGZ1ZXMwayIsIm9yaWdpbl9qdGkiOiJmMGI5ZDgzYS1kYjEwLTRiZDctOThiZS02OWM3ZDQ2MmVmYzciLCJldmVudF9pZCI6ImE1MmRlMTAzLTcyNzAtNDgxNC05NmFhLTU1MWIwOWE2NGE4ZCIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE3MDc3NDY3NDIsImV4cCI6MTcwNzc0ODU0MiwiaWF0IjoxNzA3NzQ2NzQyLCJqdGkiOiI2MWQ2NDMxYi1iYTQ4LTQzZGMtOWM4Ny00ZWZkZGFhZjJkZmQiLCJ1c2VybmFtZSI6IjcxMDVlMGMxLTljMGYtNDAxNS05ZDIzLTg1MmVjYTJhMDRlMiJ9.LDydGgxI08lHAr_hBDhtfg98u5WeHVro2z97eq2I-XVBFZs6K8Iprdyl_NP5bADQbW9Dlz_Lvce0phmHup0mcXrz2l_YHJe1ew-Jry_0_LotXW7o0dopFAoL7VjonoR4KTGOcr6tTvSAJhb9OpMbsuhpYHz-TFGfV1BhJy7XAVAB_KkT-Rb62bBfZKxFKG2RdiX4G_8PmxrKFbhj4lSPMunNPJfB2G1YOnkVTiiGrKrcb6CO-s3ntACm-uyIIMnAAhp-FJl1Vto2xh3mIJPM92Mesrz_PrARyWhoXqCJ0XyzEnl6WB4gXMRHnpLUxy6yckQiydS8HgGnJUvPUpxczw",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4321/products"
+			},
+			"response": []
+		},
+		{
+			"name": "GET PRODUCT BY ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:4321/products/65e739ba340f64be13512902"
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE ONE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"productName\":\"Product_one\",\r\n \"size\":99,\r\n \"color\":\"Black\",\r\n \"origin\":\"Macedonia\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4321/products/create/one"
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE ONE",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"productName\":\"Blue Lagune 55\",\r\n \"size\":0.33,\r\n \"color\":\"Blue\",\r\n \"origin\":\"testCountry\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4321/products/update/65e739ba340f64be13512902"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE ONE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:4321/products/delete/65e9cfdf0064a36e078c4bc6"
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL PRODUCTS AND DELETED",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:4321/products/andDeleted"
+			},
+			"response": []
+		},
+		{
+			"name": "SSE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:4321/products/sse_connection"
+			},
+			"response": []
+		},
+		{
+			"name": "HARD DELETE WHOLE COLLECTION",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:4321/products/delete_collection"
+			},
+			"response": []
+		}
+	]
+}
