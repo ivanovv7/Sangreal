@@ -1,13 +1,15 @@
+import { HydratedDocument } from "mongoose";
 import { Product, createDTO, updateDTO } from "../controller/DTO/productDtos";
-import { productsModel } from "../mongoose/schema";
+import {  productsModel,productsSchema } from "../mongoose/schema";
 
 export class ProductsModel {
   constructor() {}
 
-  async getAllProducts() {
+ 
+
+  async getAllProducts():Promise<Product[]> {
     // Return the products that are not deleted, the query filters out all the products.
     const products = await productsModel.find({deleted:false});
-
     if(!products){
       throw new Error("No products were found")
     }
@@ -17,13 +19,13 @@ export class ProductsModel {
 
 
   // Return the deleted as well
-  async getAllAndDeleted (){
+  async getAllAndDeleted ():Promise<Product[]>{
     const products = await productsModel.find();
     return products
   }
 
 
-  async getProductById(productsId: string) {
+  async getProductById(productsId: string):Promise<Product> {
     const product = await productsModel.findById(productsId);
 
     if (!product || product.deleted) {
@@ -32,7 +34,7 @@ export class ProductsModel {
     return product;
   }
 
-  async createProduct(product: createDTO) {
+  async createProduct(product: createDTO):Promise<Product> {
     //with the model we create a new object that is about to be saved in the DB
     const newProduct = new productsModel(product);
     console.log("About to be saved", newProduct);
@@ -44,9 +46,9 @@ export class ProductsModel {
     return response;
   }
 
-  async updateProduct(id: string, product: updateDTO) {
+  // findByIdAndUpdate can pottentially return NULL, this is why we have to write Product| null.
+  async updateProduct(id: string, product: updateDTO):Promise<Product | null> {
     const productFound = await this.getProductById(id);
-
    const result:Product | null = await productsModel.findByIdAndUpdate(id,
       {
         productName: product.productName || productFound.productName,
@@ -56,14 +58,13 @@ export class ProductsModel {
       }
     );
 
-
     return result
   }
 
-  async softDeleteOne(id:string){
+  async softDeleteOne(id:string):Promise<void>{
     // const deletedProduct =  await productsModel.findOneAndDelete({_id:id});
-    const softDeleted = await productsModel.updateOne({_id:id}, {deleted:true, deletedAt:new Date()})
-    return softDeleted;
+     await productsModel.updateOne({_id:id}, {deleted:true, deletedAt:new Date()})
+
   }
 
 
@@ -72,14 +73,11 @@ export class ProductsModel {
    //hard delete only the soft deleted products
   //  const result = await productsModel.deleteMany({deleted:true})
 
-
-      const result = await productsModel.deleteMany();
-      return result
+  //Delete everything, like drop collection
+  productsModel.deleteMany();
   }
 
-
-  async sendSSEmessages (){
-
+  async sendSSEmessages ():Promise<void>{
     const products = await this.getAllProducts()
     console.log("PRODUCTS",products)
   }

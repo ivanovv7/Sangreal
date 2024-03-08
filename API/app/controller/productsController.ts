@@ -104,10 +104,9 @@ export class ProductsController {
   async softDeleteOne(req: Request, res: Response) {
     try {
       const id = req.params.id;
-      let deletedProduct = await this.productsModel.softDeleteOne(id);
+      await this.productsModel.softDeleteOne(id);
       res.status(200).send({
-        message: `Product with id: ${id} was deleted`,
-        deletedProduct: deletedProduct,
+        message: `Product with id: ${id} was deleted`
       });
     } catch (error) {
       const err = error as Error;

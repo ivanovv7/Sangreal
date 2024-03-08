@@ -13,14 +13,14 @@ export interface updateDTO {
   origin?: Countries;
 }
 
-export interface Product {
+export interface Product extends Document {
   id:string,
   productName: string;
   size: number;
   color: string;
   origin: Countries;
-  deleted: boolean;
-  deletedAt: Date | null;
+  deleted?: boolean;
+  deletedAt?: Date | null;
 }
 
 // *** *** CAN'T DECLARE THIS AS A TYPE TO THE SCHEMA DON'T HAVE SOLUTION NOW, maybe mongooseSchemaFactory is needed to build the type ????
