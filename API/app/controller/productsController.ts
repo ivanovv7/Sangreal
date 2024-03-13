@@ -136,11 +136,9 @@ export class ProductsController {
     try {
       const products = await  this.productsModel.getAllProducts();
 
-     
-
       const response = [{
         data:products,
-        status:"" // we sould write failure or success here
+        status:"" // we sould write failure or success here, based on this the connection/call will be closed from the Front End.
       }]
 
       const stringifiedResponse = JSON.stringify(response);
