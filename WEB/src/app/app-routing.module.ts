@@ -5,7 +5,7 @@ import { HomeTestComponent } from './Sangreal/components/home-test/home-test.com
 const routes: Routes = [
 
   {
-    path:"sangreal",
+    path:"",
     loadChildren:() => import("./Sangreal/sangreal.module").then((m) => m.SangrealModule)
   }
 

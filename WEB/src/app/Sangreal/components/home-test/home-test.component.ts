@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { SangrealService } from '../../sangreal.service';
+import { of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-home-test',
@@ -8,14 +9,16 @@ import { SangrealService } from '../../sangreal.service';
 })
 export class HomeTestComponent implements OnInit {
   constructor(private readonly ss: SangrealService) {}
+  public sseResponse: any;
 
   ngOnInit(): void {
-    console.log('test');
+  
+    this.ss.sseResponse$.subscribe({
+      next: (data) => {
+        this.sseResponse = data;
+      },
+    });
   }
-
-  // sseClose(){
-  //   this.ss.closeSSE
-  // }
 
   sseCall() {
     this.ss.readWithSSe();

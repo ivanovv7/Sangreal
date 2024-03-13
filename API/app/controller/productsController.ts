@@ -136,9 +136,15 @@ export class ProductsController {
     try {
       const products = await  this.productsModel.getAllProducts();
 
-      const data = JSON.stringify(products);
+     
 
-      res.write(`data: ${data}\n\n`)
+      const response = [{
+        data:products,
+        status:"" // we sould write failure or success here
+      }]
+
+      const stringifiedResponse = JSON.stringify(response);
+      res.write(`data: ${stringifiedResponse}\n\n`)
 
     } 
     catch (error) {

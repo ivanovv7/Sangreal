@@ -9,7 +9,7 @@ const productsController = new ProductsController();
 //While this request is open and streaming data on 3 seconds, we can add a new product menawhile and it will be delivered to the FE in the next stream.
 //This process can be used for chat or for some running proccess that needs more time like the runs on cronos.
 router.get("/sse_connection", async (req, res) => {
-
+ 
   res.setHeader("Content-type","text/event-stream");
   res.setHeader('Cache-Control', 'no-cache');
   res.setHeader('Connection', 'keep-alive');

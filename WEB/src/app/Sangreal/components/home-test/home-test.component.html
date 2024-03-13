@@ -1,6 +1,11 @@
-<p>home-test works!</p>
-
+<h3>WHEN YOU INITIALISE CONNECTION WITH SSE, create 1 new product  using the POST route from the api. It will be displayed here as a conosole</h3>
+<h3> ***   THE SSE WILL AUTOMATICALLY CLOSE IN 25 seconds  *** </h3>
 
 <button (click)="sseCall()">SSE CALL</button>
+<div *ngFor='let product of sseResponse'>
+
+    <p>{{product.productName}}</p>
+
+</div>
 
 <!-- <button (click)="sseClose()">SSE CLOSE CALL</button> -->

@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 
 const routes = [
   {
-    path:'home',
+    path:'',
     component:HomeTestComponent
   }
 ]

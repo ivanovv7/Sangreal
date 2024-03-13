@@ -3,7 +3,7 @@ import { Product, createDTO, updateDTO } from "../controller/DTO/productDtos";
 import {  productsModel,productsSchema } from "../mongoose/schema";
 
 export class ProductsModel {
-  constructor() {}
+  constructor() {};
 
  
 
