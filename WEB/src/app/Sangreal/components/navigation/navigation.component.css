@@ -1,0 +1,28 @@
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin: 0px;
+    background-image: linear-gradient(to bottom, rgba(2, 10, 15, 1), rgba(2, 10, 15, 0.5));
+}
+.liNav {
+    list-style: none;
+    letter-spacing: normal;
+    font-size: 0.875rem;
+    color: #ce7c2e;
+    font-weight: 700;
+    font-family: Montserrat, Helvetica, sans-serif;
+    border-bottom: 1px solid transparent; 
+    transition: transform 0.4s, border-color 0.4s;
+    cursor: pointer;
+
+}
+
+
+.liNav:hover{
+    border-bottom: 1px solid #ce7c2e;
+    transform: scale(1.2);
+
+   
+}

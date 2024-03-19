@@ -1,6 +1,6 @@
 import { HydratedDocument } from "mongoose";
 import { Product, createDTO, updateDTO } from "../controller/DTO/productDtos";
-import {  productsModel,productsSchema } from "../mongoose/schema";
+import {  productsModel,productsSchema } from "../mongoose/productsSchema";
 
 export class ProductsModel {
   constructor() {};

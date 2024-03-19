@@ -1,6 +1,7 @@
 import express from "express";
 import { ProductsController } from "./controller/productsController";
 import { validateCreateDto, validateUpdateDto} from "./validators/validators";
+import { validateJWT } from "./Authentication/middlewares/authJWT";
 
 export const router = express.Router();
 
@@ -33,7 +34,7 @@ router.get("/sse_connection", async (req, res) => {
 
 
 //GET ALL
-router.get("/", async (req, res) => {
+router.get("/",validateJWT, async (req, res) => {
   await productsController.getAllProducts(req, res);
 });
 

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 
@@ -5,7 +6,71 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class SangrealService {
-  constructor(private readonly ngZone: NgZone) {}
+  constructor(private readonly ngZone: NgZone, private readonly http:HttpClient) {}
+
+  first_subscriber_observable: number = 0;
+  second_subscriber_observable: number = 0;
+  third_subscriber_observable: number = 0;
+
+  first_subscriber_subject: number = 0;
+  second_subscriber_subject: number = 0;
+  third_subscriber_subject: number = 0;
+
+
+
+observable$ = new BehaviorSubject<number>(Math.random())
+
+methodIVan(){
+
+  this.observable$.subscribe((data) => {
+
+    this.first_subscriber_observable = data
+    console.log(this.first_subscriber_observable)
+  })
+
+
+  this.observable$.subscribe((data) => {
+
+    this.second_subscriber_observable = data;
+    console.log(this.second_subscriber_observable)
+  })
+}
+
+
+
+
+
+async makeCall(): Promise<Observable<any>> {
+  return this.http.get<any>("http://localhost:4321/products");
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   _sseResponse$: BehaviorSubject<any> = new BehaviorSubject([
     { productName: 'Value from Angular, before call' },
@@ -27,7 +92,10 @@ export class SangrealService {
           parsedData = JSON.parse(event.data);
           this._sseResponse$.next(parsedData[0].data);
           //if status from SSE response is failure or success close the call
-          if (parsedData[0].status === 'failure' || parsedData[0].status === 'success') {
+          if (
+            parsedData[0].status === 'failure' ||
+            parsedData[0].status === 'success'
+          ) {
             eventSource.close();
           }
         });

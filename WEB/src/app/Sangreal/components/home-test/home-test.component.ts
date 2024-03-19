@@ -1,6 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { SangrealService } from '../../sangreal.service';
-import { of, switchMap } from 'rxjs';
+import { Observable, Subject, of, switchMap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home-test',
@@ -8,19 +9,40 @@ import { of, switchMap } from 'rxjs';
   styleUrl: './home-test.component.css',
 })
 export class HomeTestComponent implements OnInit {
-  constructor(private readonly ss: SangrealService) {}
+  constructor(private readonly ss: SangrealService , private http: HttpClient) {}
   public sseResponse: any;
+  public testObservable = of(() => {return Math.random()});
 
   ngOnInit(): void {
-  
+ 
     this.ss.sseResponse$.subscribe({
       next: (data) => {
         this.sseResponse = data;
       },
     });
+
+    this.ss.methodIVan()
+
   }
 
   sseCall() {
     this.ss.readWithSSe();
+
+
   }
+
+
+
+  async makeCall(): Promise<void> {
+   const obserFromHttp = await this.ss.makeCall()
+    
+
+ obserFromHttp.subscribe((data) => {
+    console.log(data)
+   })
+
+
+  }
+   
+
 }
