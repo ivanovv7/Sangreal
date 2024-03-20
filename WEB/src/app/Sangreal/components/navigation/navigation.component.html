@@ -1,7 +1,13 @@
-
-
 <nav>
-    <ul *ngFor="let nav of navBar">
-        <li class="liNav">{{nav}}</li>
-    </ul>
+    <mat-icon class="mobile-navbar-sangreal" aria-hidden="false" aria-label="Example home icon">menu</mat-icon>
+  
+    <img class="navbar-img" src="../../../../assets/pictures/sangreal-logo.png-Photoroom.png-Photoroom.png"
+        alt="SANGREAL">
+
+    <div class="web-pc-view-navbar">
+        <ul *ngFor="let nav of navBar">
+            <li class="liNav">{{nav}}</li>
+        </ul>
+    </div>
+
 </nav>

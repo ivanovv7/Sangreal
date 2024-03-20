@@ -33,13 +33,18 @@ export class HomeTestComponent implements OnInit {
 
 
 
-  async makeCall(): Promise<void> {
+async makeCall(): Promise<void> {
    const obserFromHttp = await this.ss.makeCall()
     
 
- obserFromHttp.subscribe((data) => {
+ obserFromHttp.subscribe({
+  next:(data) => {
     console.log(data)
-   })
+  },
+  error:(error) => {
+    console.log(error.error.message)
+  }
+ })
 
 
   }

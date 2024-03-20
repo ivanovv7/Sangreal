@@ -4,8 +4,9 @@ nav {
     align-items: center;
     gap: 50px;
     margin: 0px;
-    background-image: linear-gradient(to bottom, rgba(2, 10, 15, 1), rgba(2, 10, 15, 0.5));
+    background-image: linear-gradient(to bottom, rgba(2, 10, 29, 1), rgba(2, 10, 29, 0.75));
 }
+
 .liNav {
     list-style: none;
     letter-spacing: normal;
@@ -13,16 +14,45 @@ nav {
     color: #ce7c2e;
     font-weight: 700;
     font-family: Montserrat, Helvetica, sans-serif;
-    border-bottom: 1px solid transparent; 
+    border-bottom: 1px solid transparent;
     transition: transform 0.4s, border-color 0.4s;
     cursor: pointer;
 
 }
 
 
-.liNav:hover{
+.liNav:hover {
     border-bottom: 1px solid #ce7c2e;
     transform: scale(1.2);
 
-   
+
+}
+
+.navbar-img {
+    height: 80px;
+    padding: 2px;
+
+}
+
+.web-pc-view-navbar {
+    display: flex;
+}
+
+.mobile-navbar-sangreal {
+    display: none;
+    color: white;
+    font-size: 32px;
+}
+
+@media screen and (max-width:780px) {
+
+    .web-pc-view-navbar {
+        display: none;
+    }
+ 
+    .mobile-navbar-sangreal{
+        display: inline-block;
+    }
+
+    ;
 }

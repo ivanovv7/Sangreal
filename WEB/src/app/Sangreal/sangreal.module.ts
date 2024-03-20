@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeTestComponent } from './components/home-test/home-test.component';
 import { RoutingSangrealModule } from './routing.sangreal.module';
 import { NavigationComponent } from './components/navigation/navigation.component';
-
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -11,6 +11,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
   imports: [
     CommonModule,
     RoutingSangrealModule,
+    MatIconModule
 
   ],
   exports:[NavigationComponent]

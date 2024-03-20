@@ -46,32 +46,6 @@ async makeCall(): Promise<Observable<any>> {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   _sseResponse$: BehaviorSubject<any> = new BehaviorSubject([
     { productName: 'Value from Angular, before call' },
   ]);

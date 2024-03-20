@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SangrealModule } from './Sangreal/sangreal.module';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import { SangrealModule } from './Sangreal/sangreal.module';
     HttpClientModule,
     SangrealModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync('noop')
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
