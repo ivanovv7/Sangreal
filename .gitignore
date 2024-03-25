@@ -1,2 +1,3 @@
 /node_modules
 /API/node_modules
+# .env   -->> SHOULD NEVER BE PUSHED TO REPO! DEVELOPMENT PHASE

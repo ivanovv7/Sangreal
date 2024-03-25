@@ -13,7 +13,6 @@ nav {
     font-size: 0.875rem;
     color: #ce7c2e;
     font-weight: 700;
-    font-family: Montserrat, Helvetica, sans-serif;
     border-bottom: 1px solid transparent;
     transition: transform 0.4s, border-color 0.4s;
     cursor: pointer;
@@ -42,9 +41,34 @@ nav {
     display: none;
     color: white;
     font-size: 32px;
+    /* margin-right: 25%; */
+}
+
+
+#signIn{
+
+    position: absolute;
+    right: 50px;
+    top:17px;
+    color: beige;    
+    transition: transform 0.25s;
+
+}
+
+#signIn:hover{
+    transform: scale(1.1);
+    cursor: pointer;
 }
 
 @media screen and (max-width:780px) {
+
+nav{
+    justify-content: flex-start;
+}
+
+    /* .navbar-img{
+        /* margin-right: 35%; */
+    /* }  */
 
     .web-pc-view-navbar {
         display: none;

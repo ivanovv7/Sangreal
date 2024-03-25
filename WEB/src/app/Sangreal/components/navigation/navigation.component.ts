@@ -10,7 +10,7 @@ export class NavigationComponent {
     'RECIPES',
     'COCKTAILS',
     'WINES',
-    '  ABOUT US',
-    '  WHERE TO BUY?',
+    'ABOUT US',
+    'WHERE TO BUY?',
   ];
 }

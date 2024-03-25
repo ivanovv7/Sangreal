@@ -1,0 +1,11 @@
+<form [formGroup] = 'sigInForm'>
+
+    <div class="formContainer">
+        <input type="text" id="username" placeholder="Username" formControlName="username">
+
+        <input type="password" id="password" placeholder="Password" formControlName="password">
+    </div>
+
+
+    <button (click)="onFormSubmit">Sign in</button>
+</form>

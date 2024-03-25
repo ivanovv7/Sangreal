@@ -7,6 +7,6 @@ export const getUserByUsername = async (username: string):Promise<userDB | null>
   if(!foundUser){
     return null
   }
-    const parsedUser = foundUser?.toObject();
+    const parsedUser = foundUser.toObject();
   return parsedUser
 };

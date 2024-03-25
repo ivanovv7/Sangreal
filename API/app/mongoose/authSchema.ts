@@ -16,10 +16,16 @@ export const userSchema = new usersSchema({
     password:{
         required:true,
         type:String
-    }
+    },
+    permission:{
+        
+        type:String
+    },
+
 
 
 })
 
 
 export const userModel = mongoose.model("users_model",userSchema,"users")
+

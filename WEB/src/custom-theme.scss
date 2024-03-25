@@ -30,6 +30,9 @@ $WEB-theme: mat.define-light-theme((
   density: 0
 ));
 
+*{
+  font-family: Montserrat, Helvetica, sans-serif;
+}
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.

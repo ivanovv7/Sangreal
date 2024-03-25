@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import { v4 as uuid } from "uuid";
 import { userModel } from "../mongoose/authSchema";
 import { getUserByUsername } from "./usersService";
+import { generateToken } from "../Services/signJWT";
 
 
 
@@ -15,7 +16,7 @@ export const authRouter:Router = Router();
 
 authRouter.post("/register", async (req:Request<[],[],credentialsRequest>,res:Response) => {
 
-    const {username, password} = req.body
+    const {username, password, permission} = req.body
 
     if(!username || !password){
      
@@ -27,7 +28,8 @@ authRouter.post("/register", async (req:Request<[],[],credentialsRequest>,res:Re
     const user:userDB = {
         id:uuid(),
         username:username,
-        password:hashedPassword
+        password:hashedPassword,
+        permission: permission || "USER"
     }
 
      const newUser = new userModel(user);
@@ -41,24 +43,25 @@ authRouter.post("/login", async(req:Request<[],[],credentialsRequest>,res:Respon
     const {username, password} = req.body;
     if(!username || !password){
      
-        return res.status(400).send({message:"Username or password invalid, try again!"})
+        return res.status(401).send({message:"Username or password invalid, try again!"})
     }
 
    const foundUser:userDB|null = await getUserByUsername(username);
-   if(foundUser){
-    const isLoggedIn:boolean = await bcrypt.compare(password,foundUser.password)
-      if(isLoggedIn){
-        
-        const accessToken = jwt.sign({username:username},"user_token",{expiresIn:"25s"})
+   if(!foundUser){
 
-        res.status(200).send({message:"You are logged in!", token:accessToken})
-      }else{
+     return res.status(401).send({message:"Username or password invalid, try again!"})
+
+   }
+    const isLoggedIn:boolean = await bcrypt.compare(password,foundUser.password)
+      if(!isLoggedIn){
         res.status(401).send({message:"Your password is invalid! Try again"})
       }
-   }else{
-    return res.status(400).send({message:"Username or password invalid, try again!"})
-   }
 
+        
+        const accessToken = generateToken(foundUser)
 
+        res.status(200).send({message:"You are logged in!", token:accessToken})
+
+   
 })
 

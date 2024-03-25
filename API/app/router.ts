@@ -1,7 +1,8 @@
 import express from "express";
 import { ProductsController } from "./controller/productsController";
 import { validateCreateDto, validateUpdateDto} from "./validators/validators";
-import { validateJWT } from "./Authentication/middlewares/authJWT";
+import { validateAdmin, validateJWT } from "./Authentication/middlewares/authJWT";
+import { customRequest } from "./Authentication/authInterfaces";
 
 export const router = express.Router();
 
@@ -30,37 +31,37 @@ router.get("/sse_connection", async (req, res) => {
     res.end(); // End the response
   });
 })
-
+ 
 
 
 //GET ALL
-router.get("/",validateJWT, async (req, res) => {
+router.get("/", async (req, res) => {
   await productsController.getAllProducts(req, res);
 });
 
-router.get("/andDeleted", async (req,res) => {
+router.get("/andDeleted", validateJWT,validateAdmin, async (req,res) => {
     await productsController.getAllAndDeleted(req,res);
 })
 
 //GET PRODUCT BY ID
-router.get("/:id", async (req, res) => {
+router.get("/:id",validateJWT, async (req, res) => {
   await productsController.getProductById(req, res);
 });
 
 //CREATE ONE, here we have middleware to validate the re.body
-router.post("/create/one", validateCreateDto, async (req, res) => {
+router.post("/create/one", validateJWT,validateAdmin, validateCreateDto, async (req, res) => {
   await productsController.createProduct(req, res);
 });
 
-router.patch("/update/:id", validateUpdateDto, async (req, res) => {
+router.patch("/update/:id",validateJWT,validateAdmin, validateUpdateDto, async (req, res) => {
   await productsController.updateProduct(req, res);
 });
 
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/delete/:id",validateJWT,validateAdmin, async (req, res) => {
   await productsController.softDeleteOne(req, res);
 });
 
-router.delete("/delete_collection", async (req, res) => {
+router.delete("/delete_collection",validateJWT,validateAdmin, async (req, res) => {
 
   await productsController.hardDeleteCollection(req,res)
 
