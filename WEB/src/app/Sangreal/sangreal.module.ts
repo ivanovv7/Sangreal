@@ -9,9 +9,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { RouterModule } from '@angular/router';
+import { RegisterComponent } from './logIn_register/register/register.component';
 
 @NgModule({
-  declarations: [HomeTestComponent, NavigationComponent, LogInDialog],
+  declarations: [HomeTestComponent, NavigationComponent, LogInDialog,RegisterComponent],
   imports: [
     CommonModule,
     RoutingSangrealModule,
@@ -20,7 +22,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatInputModule,
     FormsModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [NavigationComponent],
 })

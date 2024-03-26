@@ -1,0 +1,80 @@
+
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Style for the form container */
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    margin-bottom: 20px;
+}
+
+/* Style for the input fields */
+input[type="text"],
+input[type="password"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Style for the sign in button */
+button {
+    width: 30%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Style for the register sentence */
+.registerSentence {
+    text-align: center;
+    margin-top: 10px;
+    color: #333;
+    font-size: 14px;
+}
+
+.registerSentence a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.registerSentence a:hover {
+    text-decoration: underline;
+}
+
+.sigInButton{
+   align-self: auto;
+   text-align: center;
+   margin-left: 34%;
+   cursor: pointer;
+}
+
+.registerHere{
+    color: rgb(72,67,196);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.registerHere:hover{
+    color: rgb(39, 33, 192);
+    font-weight:300;
+}

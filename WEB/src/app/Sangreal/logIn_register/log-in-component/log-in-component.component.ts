@@ -5,10 +5,10 @@ import { LogInUser } from '../interfaces/user';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
-export type DeleteDialogResult =  'close' | LogInUser;
+export type LogInDialogResult =  'close' | LogInUser;
 export interface logInData {
-  animal: string;
-  name: string;
+  username: string;
+  password: string;
 }
 
 @Component({
@@ -22,7 +22,7 @@ export class LogInDialog implements OnInit {
   //DIALOG
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: logInData, // this data will be passed to the DIALOG do i need it ?
-    private readonly dialogRef: MatDialogRef<LogInDialog, DeleteDialogResult>
+    private readonly dialogRef: MatDialogRef<LogInDialog, LogInDialogResult>
   ) {
   }
 
@@ -32,13 +32,10 @@ export class LogInDialog implements OnInit {
   }
 
   closeDialog():void{
-
     this.dialogRef.close("close")
   }
 
   sigIn(user:LogInUser):void{
-
-  
     this.dialogRef.close(user)
   }
 
@@ -55,6 +52,8 @@ export class LogInDialog implements OnInit {
       password: new FormControl("", [Validators.required])
     })
 
+
+
   }
 
   onFormSubmit():void{
@@ -64,6 +63,6 @@ export class LogInDialog implements OnInit {
       password:this.sigInForm.get("password")?.value
     }
 
-    console.log(user)
+    this.sigIn(user)
   }
 }

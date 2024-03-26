@@ -1,11 +1,16 @@
-<form [formGroup] = 'sigInForm'>
-
+<form [formGroup]="sigInForm">
     <div class="formContainer">
-        <input type="text" id="username" placeholder="Username" formControlName="username">
 
+        <p>Email</p>
+        <input type="text" id="username" placeholder="Username" formControlName="username">
+        <p>Password</p>
         <input type="password" id="password" placeholder="Password" formControlName="password">
     </div>
 
+    <button class="sigInButton" (click)="onFormSubmit()">Sign in</button>
 
-    <button (click)="onFormSubmit">Sign in</button>
+    <div class="registerSentence">
+        <span>You don't have an account?</span> 
+     <p (click)="closeDialog()" class="registerHere" routerLink="/register">Register here</p>
+    </div>
 </form>
