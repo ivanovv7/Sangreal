@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeTestComponent } from './Sangreal/components/home-test/home-test.component';
 
 const routes: Routes = [
 

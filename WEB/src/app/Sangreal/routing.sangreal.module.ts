@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HomeTestComponent } from './components/home-test/home-test.component';
 import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './logIn_register/register/register.component';
+import { ProtectedComponent } from './components/protected/protected.component';
+import { routeGuardGuard } from './-route-guard.guard';
 
 
 const routes = [
@@ -13,6 +15,11 @@ const routes = [
   {
     path:"register",
     component:RegisterComponent
+  },
+  {
+    path:"protected",
+    component:ProtectedComponent,
+    canActivate:[routeGuardGuard]
   }
 ]
 

@@ -8,5 +8,5 @@ export const getUserByUsername = async (username: string):Promise<userDB | null>
     return null
   }
     const parsedUser = foundUser.toObject();
-  return parsedUser
+  return parsedUser as userDB
 };

@@ -13,6 +13,8 @@ export class HomeTestComponent implements OnInit {
   public sseResponse: any;
   public testObservable = of(() => {return Math.random()});
 
+  public products:any 
+
   ngOnInit(): void {
  
     this.ss.sseResponse$.subscribe({
@@ -40,9 +42,11 @@ async makeCall(): Promise<void> {
  obserFromHttp.subscribe({
   next:(data) => {
     console.log(data)
+    this.products = data
   },
   error:(error) => {
-    console.log(error.error.message)
+    console.log("ERROR")
+    console.log(error)
   }
  })
 

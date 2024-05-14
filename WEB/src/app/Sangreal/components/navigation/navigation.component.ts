@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LogInDialog, LogInDialogResult, logInData } from '../../logIn_register/log-in-component/log-in-component.component';
-import { LogInUser } from '../../logIn_register/interfaces/user';
+import { User } from '../../logIn_register/interfaces/user';
 
 @Component({
   selector: 'app-navigation',
@@ -31,7 +31,8 @@ export class NavigationComponent {
     })
 
     dialogReference.beforeClosed().subscribe((data) => {
-      console.log(`Data from dialog: ${data}`)
+      if(data === "close" || data === undefined)return
+      console.log(`Data from dialog: ${data?.username}`)
     })
   }
 

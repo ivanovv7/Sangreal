@@ -2,7 +2,7 @@
     <div class="formContainer">
 
         <p>Email</p>
-        <input type="text" id="username" placeholder="Username" formControlName="username">
+        <input type="text" id="username" placeholder="E-mail" formControlName="username">
         <p>Password</p>
         <input type="password" id="password" placeholder="Password" formControlName="password">
     </div>
@@ -14,3 +14,7 @@
      <p (click)="closeDialog()" class="registerHere" routerLink="/register">Register here</p>
     </div>
 </form>
+
+<div class="errorMessage">
+    <p id="errmsg">{{errorMessage}}</p>
+</div>

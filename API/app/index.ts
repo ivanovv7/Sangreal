@@ -3,7 +3,6 @@ import { mongo_connection } from "./mongoConnection";
 import express from "express";
 import { router } from "./router";
 import cors from "cors"
-import { getUserByUsername } from "./Authentication/usersService";
 import { authRouter } from "./Authentication/authRouter";
 import dotenv from "dotenv"
 

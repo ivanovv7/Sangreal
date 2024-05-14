@@ -1,4 +1,5 @@
-export type LogInUser = {
+export type User = {
     username:string,
-    password:string
+    password:string,
+    permission?:string
 }

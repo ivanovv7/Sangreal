@@ -35,7 +35,7 @@ router.get("/sse_connection", async (req, res) => {
 
 
 //GET ALL
-router.get("/", async (req, res) => {
+router.get("/",validateJWT, async (req, res) => {
   await productsController.getAllProducts(req, res);
 });
 
