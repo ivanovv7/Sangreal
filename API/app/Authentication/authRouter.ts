@@ -6,6 +6,7 @@ import { v4 as uuid } from "uuid";
 import { userModel } from "../mongoose/authSchema";
 import { getUserByUsername } from "./usersService";
 import { generateToken } from "../Services/signJWT";
+import { validateJWT } from "./middlewares/authJWT";
 
 
 
@@ -68,5 +69,9 @@ authRouter.post("/login", async(req:Request<[],[],credentialsRequest>,res:Respon
         res.status(200).send({message:"You are logged in!", token:accessToken})
 
    
+})
+
+authRouter.get("/validateToken", validateJWT,async (req:Request, res:Response) => {
+  res.status(200).send({message:"valid"})
 })
 

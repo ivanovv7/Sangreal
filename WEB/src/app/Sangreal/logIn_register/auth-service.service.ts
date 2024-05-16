@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from './interfaces/user';
-import { Observable, tap } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
 import { responseAuth } from '../logIn_register/interfaces/response';
 
 @Injectable({
@@ -29,16 +29,27 @@ export class AuthServiceService {
       );
   }
 
+  validateJwt():Observable<{message:string}>{
+    const token:string|null = this.getToken();
+
+    return this.http.get<{message:string}>('http://localhost:4321/auth/validateToken')
+  }
+
   logout():void {
     localStorage.removeItem("authToken")
   }
 
   getToken():null | string {
-     //TODO --->> this should make call to db and check if the token is valid, if the token is expired...
-    return localStorage.getItem("authToken")
+     return localStorage.getItem("authToken");
   }
 
-  isLoggedIn():boolean{
-    return !!this.getToken();
+  isLoggedIn(): Observable<boolean> {
+    return this.validateJwt().pipe(
+      map((data) => data.message === 'valid'), //the map return observable, if the statement is true the observable will emmit true
+      catchError((error) => {
+        console.log('Error from validation', error);
+        return of(false);
+      })
+    );
   }
 }

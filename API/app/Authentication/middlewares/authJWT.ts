@@ -2,33 +2,55 @@ import { IncomingHttpHeaders } from "http";
 import { Request, Response, NextFunction } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { customRequest } from "../authInterfaces";
-
-
-// if we want to add a new property to the request in this phase we must create new interface that will extend the Request and add that property.
-export const validateJWT = async (req:Request,res:Response,next:NextFunction) => {
-
-const headers = req.headers as unknown as IncomingHttpHeaders
-
-const token = headers.authorization
-
-
-if(!token){
-  return  res.status(400).send({message:"Token is required for authentication"})
+interface CustomRequest extends Request {
+  user?: JwtPayload | string;
 }
+export const validateJWT = async (req: Request, res: Response, next: NextFunction) => {
+  const authorizationHeader = req.headers.authorization;
 
-try {
-   const payload: JwtPayload | string = jwt.verify(token, process.env.USER_TOKEN!);
-    (req as customRequest).user = payload as JwtPayload; // Explicitly cast req to CustomRequest
-} catch (error) {
+  if (!authorizationHeader) {
+    return res.status(400).send({ message: "Token is required for authentication" });
+  }
+
+  const token = authorizationHeader
+
+  if (!token) {
+    return res.status(400).send({ message: "Token is required for authentication" });
+  }
+
+  try {
+    const payload: JwtPayload | string = jwt.verify(token, process.env.USER_TOKEN!);
+    (req as CustomRequest).user = payload;
+    next();
+  } catch (error) {
+    return res.status(401).send({ message: "Token is invalid or expired!" });
+  }
+};
+// if we want to add a new property to the request in this phase we must create new interface that will extend the Request and add that property.
+// export const validateJWT = async (req:Request,res:Response,next:NextFunction) => {
+
+// const headers = req.headers as unknown as IncomingHttpHeaders
+
+// const token = headers.authorization
+
+
+// if(!token){
+//   return  res.status(400).send({message:"Token is required for authentication"})
+// }
+
+// try {
+//    const payload: JwtPayload | string = jwt.verify(token, process.env.USER_TOKEN!);
+//     (req as customRequest).user = payload as JwtPayload; // Explicitly cast req to CustomRequest
+// } catch (error) {
     
 
-return res.status(401).send({message:"Token is invlalid or expired !"})
-}
+// return res.status(401).send({message:"Token is invlalid or expired !"})
+// }
 
-next()
+// next()
 
 
-}
+// }
 
 
 export const validateAdmin = async (req:Request,res:Response,next:NextFunction) => {
@@ -45,3 +67,6 @@ export const validateAdmin = async (req:Request,res:Response,next:NextFunction) 
   next()
 
 }
+
+
+
