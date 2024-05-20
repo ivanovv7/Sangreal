@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LogInDialog, LogInDialogResult, logInData } from '../../logIn_register/log-in-component/log-in-component.component';
-import { User } from '../../logIn_register/interfaces/user';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
-  styleUrl: './navigation.component.css',
+  styleUrls: ['./navigation.component.css'],
 })
 export class NavigationComponent {
+  menuOpen: boolean = false;
 
-
-  constructor(private readonly dialog:MatDialog){}
   navBar: string[] = [
     'RECIPES',
     'COCKTAILS',
@@ -20,21 +18,22 @@ export class NavigationComponent {
     'WHERE TO BUY?',
   ];
 
+  constructor(private readonly dialog: MatDialog) {}
 
-  openSignInDialog():void{
-
-    // what component to open / what is sent to dialog / what is recieved from dialog
-   let dialogReference = this.dialog.open<LogInDialog,logInData,LogInDialogResult>(LogInDialog,{
-      height:"400px",
-      width:"530px",
-      data:{username:"ivan",password:"Dd"}
-    })
+  openSignInDialog(): void {
+    const dialogReference = this.dialog.open<LogInDialog, logInData, LogInDialogResult>(LogInDialog, {
+      height: '400px',
+      width: '530px',
+      data: { username: 'ivan', password: 'Dd' },
+    });
 
     dialogReference.beforeClosed().subscribe((data) => {
-      if(data === "close" || data === undefined)return
-      console.log(`Data from dialog: ${data?.username}`)
-    })
+      if (data === 'close' || data === undefined) return;
+      console.log(`Data from dialog: ${data?.username}`);
+    });
   }
 
-
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+  }
 }

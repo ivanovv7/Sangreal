@@ -3,7 +3,7 @@ nav {
     justify-content: center;
     align-items: center;
     gap: 50px;
-    margin: 0px;
+    margin: 0;
     background-image: linear-gradient(to bottom, rgba(2, 10, 29, 1), rgba(2, 10, 29, 0.75));
 }
 
@@ -16,67 +16,100 @@ nav {
     border-bottom: 1px solid transparent;
     transition: transform 0.4s, border-color 0.4s;
     cursor: pointer;
-
 }
-
 
 .liNav:hover {
     border-bottom: 1px solid #ce7c2e;
     transform: scale(1.2);
-
-
 }
 
 .navbar-img {
     height: 80px;
     padding: 2px;
-
 }
 
 .web-pc-view-navbar {
     display: flex;
 }
 
-.mobile-navbar-sangreal {
-    display: none;
-    color: white;
-    font-size: 32px;
-    /* margin-right: 25%; */
+.mobile-view-navbar {
+    position: fixed;
+    top: 1;
+    left: -250px;
+    /* Start off-screen */
+    height: 100%;
+    width: 250px;
+    background-image: linear-gradient(to right, rgba(2, 10, 29, 1), rgba(2, 10, 29, 0.75));
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+    /* Ensure it appears on top */
+    transition: left 0.7s ease;
 }
 
+.open {
+    left: 0;
+    /* Slide in from the left */
+}
 
-#signIn{
+.hamburger-menu,
+.closeHamMenu {
+    cursor: pointer;
+    color: white;
+}
 
+#signIn {
     position: absolute;
     right: 50px;
-    top:17px;
-    color: beige;    
+    top: 17px;
+    color: beige;
     transition: transform 0.25s;
-
 }
 
-#signIn:hover{
+#signIn:hover {
     transform: scale(1.1);
     cursor: pointer;
 }
 
-@media screen and (max-width:780px) {
-
-nav{
-    justify-content: flex-start;
-}
-
-    /* .navbar-img{
-        /* margin-right: 35%; */
-    /* }  */
+@media screen and (max-width: 780px) {
+    nav {
+        justify-content: flex-start;
+    }
 
     .web-pc-view-navbar {
         display: none;
     }
- 
-    .mobile-navbar-sangreal{
-        display: inline-block;
+
+    .navbar-img {
+        margin: 0 auto;
     }
 
-    ;
+    .hamburger-menu {
+        display: inline-block;
+        color: white;
+    }
+
+    .mobile-view-navbar {
+        display: flex;
+    }
+
+    ul {
+        padding: 0;
+        margin-top: 10px;
+    }
+
+    .mobile-view-navbar .list:first-of-type {
+        margin-top: 50px;
+    }
+}
+
+@media screen and (min-width: 780px) {
+    .mobile-view-navbar {
+        display: none;
+    }
+
+    .hamburger-menu,
+    .closeHamMenu {
+        display: none;
+    }
 }
