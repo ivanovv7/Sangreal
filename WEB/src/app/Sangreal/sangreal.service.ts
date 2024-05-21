@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,43 +8,22 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 export class SangrealService {
   constructor(private readonly ngZone: NgZone, private readonly http:HttpClient) {}
 
-  first_subscriber_observable: number = 0;
-  second_subscriber_observable: number = 0;
-  third_subscriber_observable: number = 0;
 
-  first_subscriber_subject: number = 0;
-  second_subscriber_subject: number = 0;
-  third_subscriber_subject: number = 0;
+  _signedAs$:Subject<string> = new Subject() 
+  get signedAs$(){
+    return this._signedAs$.asObservable()
+  }
 
-
-
-observable$ = new BehaviorSubject<number>(Math.random())
-
-methodIVan(){
-
-  this.observable$.subscribe((data) => {
-
-    this.first_subscriber_observable = data
-    console.log(this.first_subscriber_observable)
-  })
+  populateSignedAs(username:string):void{
+    this._signedAs$.next(username)
+  }
 
 
-  this.observable$.subscribe((data) => {
-
-    this.second_subscriber_observable = data;
-    console.log(this.second_subscriber_observable)
-  })
-}
-
-
-
-
-
+  /*SSE COMPLETE IMPLEMENTATION*/ 
 async makeCall(): Promise<Observable<any>> {
   return this.http.get<any>("http://localhost:4321/products");
   
 }
-
 
   _sseResponse$: BehaviorSubject<any> = new BehaviorSubject([
     { productName: 'Value from Angular, before call' },

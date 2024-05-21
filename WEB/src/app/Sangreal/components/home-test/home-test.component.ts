@@ -23,7 +23,7 @@ export class HomeTestComponent implements OnInit {
       },
     });
 
-    this.ss.methodIVan()
+    // this.ss.methodIVan()
 
   }
 
