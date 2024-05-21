@@ -66,7 +66,7 @@ authRouter.post("/login", async(req:Request<[],[],credentialsRequest>,res:Respon
         
         const accessToken = generateToken(foundUser)
 
-        res.status(200).send({message:"You are logged in!", token:accessToken})
+        res.status(200).send({message:"You are logged in!", token:accessToken, username:username})
 
    
 })
