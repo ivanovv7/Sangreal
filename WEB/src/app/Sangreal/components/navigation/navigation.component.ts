@@ -15,7 +15,7 @@ export class NavigationComponent {
     'COCKTAILS',
     'WINES',
     'ABOUT US',
-    'WHERE TO BUY?',
+    'WHERE TO BUY',
   ];
 
   constructor(private readonly dialog: MatDialog) {}
@@ -31,6 +31,11 @@ export class NavigationComponent {
       if (data === 'close' || data === undefined) return;
       console.log(`Data from dialog: ${data?.username}`);
     });
+  }
+
+  toLoverCase(sectionName:string):string{
+    const path: string = sectionName.toLowerCase().replace(/ /g, '-');
+    return path
   }
 
   toggleMenu(): void {
