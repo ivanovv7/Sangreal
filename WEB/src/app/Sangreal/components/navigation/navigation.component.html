@@ -8,7 +8,7 @@
 
     <div class="web-pc-view-navbar">
         <ul *ngFor="let nav of navBar">
-            <li class="liNav">{{nav}}</li>
+            <li class="liNav" [routerLink]="[toLoverCase(nav)]">{{nav}}</li>
         </ul>
     </div>
 
@@ -19,6 +19,6 @@
 
 <div class="mobile-view-navbar" [ngClass]="{'open': menuOpen}">
     <ul *ngFor="let nav of navBar" class="list">
-        <li class="liNav">{{nav}}</li>
+        <li class="liNav" [routerLink]="[toLoverCase(nav)]">{{nav}}</li>
     </ul>
 </div>
