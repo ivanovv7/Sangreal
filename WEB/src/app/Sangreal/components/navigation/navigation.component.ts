@@ -18,6 +18,7 @@ export class NavigationComponent implements OnInit{
   menuOpen: boolean = false;
   loggedIn: boolean = false;
   signedInAs:string = '';
+  dropdownOpen:boolean = true;
 
   navBar: string[] = [
     'RECIPES',
@@ -62,6 +63,16 @@ export class NavigationComponent implements OnInit{
 
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
+  }
+
+  toggleDropdown(): void {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
+
+  signOut():void{
+    this.authService.logout()
+    this.toggleDropdown()
+    this.signedInAs = '';
   }
 
 

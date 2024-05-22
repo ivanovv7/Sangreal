@@ -109,6 +109,8 @@ margin-top: 16px;
     align-items: center;
 }
 
+
+
 #signIn {
     position: absolute;
     right: 50px;
@@ -151,6 +153,10 @@ margin-top: 16px;
 
     .mobile-view-navbar .list:first-of-type {
         margin-top: 50px;
+    }
+
+    #signedIn{
+        display: none;
     }
 }
 
