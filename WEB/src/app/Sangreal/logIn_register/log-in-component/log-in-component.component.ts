@@ -5,6 +5,7 @@ import { User } from '../interfaces/user';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthServiceService } from '../auth-service.service';
 import { Router } from '@angular/router';
+import { SangrealService } from '../../sangreal.service';
 
 
 export type LogInDialogResult =  'close' | User;
@@ -25,7 +26,8 @@ export class LogInDialog implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: logInData, // this data will be passed to the DIALOG do i need it ?
     private readonly dialogRef: MatDialogRef<LogInDialog, LogInDialogResult>, private readonly authService:AuthServiceService,
-    private readonly router:Router
+    private readonly router:Router,
+    private readonly sangrealService:SangrealService
   ) {
   }
 
@@ -45,6 +47,7 @@ export class LogInDialog implements OnInit {
       next:(data) => {
         console.log("Log in data",data)
          this.dialogRef.close(user)
+         this.sangrealService.populateSignedAs(data.username)
          this.router.navigate(["/"])
       },
       error:(error) => {
